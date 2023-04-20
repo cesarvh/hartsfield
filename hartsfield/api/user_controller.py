@@ -18,7 +18,34 @@ SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED
 "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
 ENHANCEMENTS, OR MODIFICATIONS.
 """
-def register_routes(app):
-    import hartsfield.api.archive_controller
-    import hartsfield.api.auth_controller
-    import hartsfield.api.user_controller
+from flask import current_app as app
+
+@app.route('/api/user/<user_id>/url', methods=['GET', 'POST'])
+def get_user_url(user_id=None):
+    # TO DO: Actual fetching logic
+    response = [{
+            "user": 'Cesar Villalobos',
+            "uid": '1',
+            "signed_url": 'https://mockurl.berkeley.edu/9fed0c91c15a01c86cac2a6e74eede0e',
+            "expiration_date": '2023-04-13T21:20:00.000Z'
+        },
+        {
+            "user": 'Cesar Villalobos',
+            "uid": '1',
+            "signed_url": 'https://mockurl.berkeley.edu/406dae77319aa765d84e9f81dc586d71',
+            "expiration_date": '2023-12-04T21:20:00.000Z'
+        }
+    ]
+    return response
+
+@app.route('/api/account')
+def account_details():
+    # Returns the details of the user that is currently logged in
+    res = {
+	    "uid": '1',
+	    "userName": "Cesar Villalobos",
+	    "datahubName": "cesarvh",
+        "isAdmin": True
+    }
+    return res
+

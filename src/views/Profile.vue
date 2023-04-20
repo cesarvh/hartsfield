@@ -1,7 +1,8 @@
+<Suspense>
 <template>
   <v-container>
     <v-responsive>
-      Welcome {{ user.name }}
+      Welcome {{ user.userName }}
       <div v-if="user.isAdmin">
         <p>Search a student's archives:</p>
         <v-row>
@@ -53,6 +54,10 @@
     </v-responsive>
   </v-container>
 </template>
+</Suspense>
+
+
+
 
 <script>
 import axios from 'axios';
@@ -60,19 +65,26 @@ import axios from 'axios';
 export default {
   name: 'Profile',
   data:() => ({
-    user: {
-      name: 'Cesar Villalobos',
-      uid: null,
-      isAdmin: true
-    },
+    user: {},
     userUrls: [],
   }),
+  async setup() {
+    const path = "http://127.0.0.1:5000/api/account"
+    console.log("hi")
+    axios.get(path)
+    .then((res) => {
+      this.user = res;
+    }).catch((err) =>{
+      console.log(err)
+    })
+  },
   methods: {
     getUserUrls() {
       const path = "http://127.0.0.1:5000/api/user/1/url"
       axios.get(path)
       .then((res) => {
         this.userUrls = res.data;
+        console.log(res)
       }).catch((err) => {
         console.log(err)
       })   
