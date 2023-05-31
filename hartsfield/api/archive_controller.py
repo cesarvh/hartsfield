@@ -20,27 +20,37 @@ ENHANCEMENTS, OR MODIFICATIONS.
 """
 from flask import current_app as app
 
-@app.route('/api/user/<user_id>/url', methods=['GET', 'POST'])
-def get_user_url(user_id=None):
-    # TO DO: Actual fetching logic
-    response = [{
-            "user": 'Cesar Villalobos',
-            "signed_url": 'https://thisismymockurl.berkeley.edu/9fed0c91c15a01c86cac2a6e74eede0e',
-            "expiration_date": '12/31/2023'
-        },
-        {
-            "user": 'Cesar Villalobos',
-            "signed_url": 'https://thisismymockurl.berkeley.edu/406dae77319aa765d84e9f81dc586d71',
-            "expiration_date": '04/12/2023'
+@app.route('/api/archives')
+def retrieve_archives():
+    # Returns the available archives of the currently-logged in user
+    res = {
+        "archiveList": {
+            "uid": "1",
+            "pageNum": "0",
+            "pageSize": "20",
+            "itemsInPage": "20",
+            "totalItems": "3",
+            "listItem": [
+                {
+                    "archiveID": "679c4d8b-1a97-4b18-a1ad",
+                    "archiveFileName": "bigdata_101.tgz", 
+                    "createdAt": "2015-12-01T21:20:00.000Z",
+                    "sizeBytes": "30345"
+                }, 
+                {
+                    "archiveId": "7ae3a5b0-7774-4052-8f3d", 
+                    "archiveFileName": "bigdata_201.tgz",
+                    "createdAt": "2015-12-01T21:20:00.000Z",
+                    "sizeBytes": "12356"
+                }, 
+                {
+                    "archiveId": "28c27b2d-b439-4617-a07a", 
+                    "archiveFileName": "bigdata_301.tgz",
+                    "createdAt": "2015-12-01T21:20:00.000Z", 
+                    "sizeBytes": "54329"
+                }
+            ]
         }
-    ]
-    return response
+    }
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    return '<p>logging you in... </p>' #do_the_login()
-
-@app.route('/')
-def hello_world():
-    return "<p>Hello World</p>"
-
+    return res

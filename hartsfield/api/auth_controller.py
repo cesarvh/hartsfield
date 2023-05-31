@@ -18,7 +18,9 @@ SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED
 "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
 ENHANCEMENTS, OR MODIFICATIONS.
 """
-def register_routes(app):
-    import hartsfield.api.archive_controller
-    import hartsfield.api.auth_controller
-    import hartsfield.api.user_controller
+from flask import current_app as app
+
+@app.route('/api/login', methods=['GET', 'POST'])
+def login():
+    # do the login
+    return 'success'
