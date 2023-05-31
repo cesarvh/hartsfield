@@ -25,6 +25,7 @@ const routes = [
   {
     component: Profile,
     path: '/user/urls',
+    name: 'Urls',
     meta: {
       title: 'Profile'
     }

@@ -12,14 +12,14 @@
         <p class="my-5  text-h5 font-weight-light" >
             Welcome to the DataHub Archive Retrieval Tool
         </p>
-
         <v-btn 
-            class="my-5 font-weight-light"
-            size="x-large"
-            variant="flat"
-            color="#3c7cc0"
-            @click="toCasLogin"
-            >CalNet Login
+          class="my-5 font-weight-light"
+          :to="{ name: 'Urls' }"
+          size="x-large"
+          variant="flat"
+          color="#3c7cc0"
+          >
+          Log In
         </v-btn>
         
         <p class="ma-5 pa-5 text-caption font-weight-light">
@@ -31,8 +31,13 @@
 </template>
 
 <script lang="ts">
+import { RouterLink } from 'vue-router'
+
   export default{
     name: 'Login',
+    components: {
+      RouterLink,
+    },
     methods: {
       toCasLogin() {
         console.log("Redirecting to CAS Login...")
