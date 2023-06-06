@@ -2,6 +2,7 @@ canvasapi==3.0.0
 Flask==2.2.2
 Flask-Cors==3.0.10
 python-cas==1.6.0
+simplejson==3.18.3
 Werkzeug==2.2.2
 
 

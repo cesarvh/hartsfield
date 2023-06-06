@@ -28,4 +28,4 @@ DEBUG = True
 
 INDEX_HTML = 'public/index.html'
 
-VUE_LOCALHOST_BASE_URL = 'http://localhost:8080'
+VITE_APP_API_BASE_URL = 'http://localhost:8080'

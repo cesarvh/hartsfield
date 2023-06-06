@@ -3,6 +3,7 @@
     <v-responsive>
       <div class="text-h5 mt-5">Welcome {{ user.userName }}</div>
       <div v-if="user.isAdmin" class="pt-5">
+
         <p class="pb-4">Search a user's archives:</p>
         <v-row>
           <v-col>
@@ -179,7 +180,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 td {
   white-space: nowrap; 
   text-overflow:ellipsis; 
