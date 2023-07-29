@@ -14,7 +14,7 @@
         </p>
         <v-btn 
           class="my-5 font-weight-light"
-          :to="{ name: 'Urls' }"
+          @click="toCasLogin()"
           size="x-large"
           variant="flat"
           color="#3c7cc0"
@@ -32,6 +32,7 @@
 
 <script lang="ts">
 import { RouterLink } from 'vue-router'
+import axios from 'axios';
 
   export default{
     name: 'Login',
@@ -40,6 +41,12 @@ import { RouterLink } from 'vue-router'
     },
     methods: {
       toCasLogin() {
+        const path = `http://127.0.0.1:5000/cas/callback`
+        axios.get(path)
+        .then((res) => {
+          const userUrls = res.data;
+        }).catch((err) => {
+        })   
         console.log("Redirecting to CAS Login...")
       }
     }
